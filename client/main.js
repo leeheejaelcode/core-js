@@ -1,3 +1,2 @@
-const a = 'hello';
-
-console.log('안녕 웹 브라우저!');
+const a = confirm('정말 지울거야?');
+alert(a);
