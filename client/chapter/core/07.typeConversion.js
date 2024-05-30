@@ -67,9 +67,9 @@ console.log(parseInt(width, 10)); // 뒤에 숫자는 n진수
 // 위에 나열한 것 이외의 것들
 
 console.log('데이터 -> 불리언');
-console.log(Boolean(friend));
-console.log(Boolean(0));
-console.log(Boolean(''));
-console.log(Boolean(NaN));
-console.log(Boolean(' '));
-console.log(Boolean('0'));
+console.log(Boolean(friend)); // false
+console.log(Boolean(0)); // false
+console.log(Boolean('')); // false
+console.log(Boolean(NaN)); // false
+console.log(Boolean(' ')); // true
+console.log(Boolean('0')); // true
