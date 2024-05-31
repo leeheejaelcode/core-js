@@ -50,10 +50,10 @@ console.log('문자 -> 숫자');
 
 let num = '100';
 
-console.log(Number(num)); // 명시적 형변환
-console.log(num * 1); // 암시적 형변환환
-console.log(num / 1); // 암시적 형변환
-console.log(+num); // 암시적 형변환
+console.log(Number(num)); // 명시적 형변환 100
+console.log(num * 1); // 암시적 형변환 100
+console.log(num / 1); // 암시적 형변환 100
+console.log(+num); // 암시적 형변환 100
 
 // numeric string
 const width = '120.5px';
