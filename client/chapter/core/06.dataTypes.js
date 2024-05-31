@@ -95,13 +95,17 @@ const user = {
   sayHi: function () {
     // 1. normal function
     // prototype을 포함하고 있어서 무거움
+    // this 바인딩의 차이 this는 모든 객체가 생성이 될 때 자기참조 변수
+    // 이 방식으로 함수를 정의하면 해당 함수의 this는 함수가 호출된 객체를 가리킵니다. 즉, sayHi 함수가 객체의 메서드로 호출될 때, this는 해당 객체를 참조합니다.
     return 'hello';
   },
   sayHi2: () => {
     // 2. arrow function
     // 가벼움
     // prototype을 포함하고 있지않아서 가벼움
-
+    // this 바인딩의 차이
+    // 화살표 함수에는 this키워드가 생성되지 않음
+    // 화살표 함수는 자신을 감싸는 가장 가까운 함수나 전역 객체를 가리키는 this를 갖습니다. 따라서 객체의 메서드로 사용될 때에도 this는 해당 객체가 아니라 주변 스코프의 this를 가리킵니다.
     return 'hello';
   },
   sayHi3() {
@@ -113,6 +117,7 @@ const user = {
        2. 가볍게 사용가능
     */
     // 함수안에 함수는 arrow function을 자주 사용합니다.
+    // 이 경우에도 함수가 객체의 메서드로 호출될 때, this는 호출된 객체를 가리킵니다. 즉, sayHi3 함수가 객체의 메서드로 사용될 때에는 첫 번째 방식과 동일하게 작동합니다.
     const sayBye = () => {
       return 'bye';
     };
