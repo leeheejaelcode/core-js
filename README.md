@@ -17,14 +17,17 @@
 - [x] legacy Var [바로가기](client/chapter/core/05.legacyVar.js)
 - [x] Data Types [바로가기](client/chapter/core/06.dataTypes.js)
 - [x] Type Conversion [바로가기](client/chapter/core/07.typeConversion.js)
-- [x] Operations
-  - 1.[바로가기](client/chapter/core/08-1.operations.js.operations.js)
-  - 2.[바로가기](client/chapter/core/08-2.operations.js.operations.js)
-- [x] Condition
-  - 1.[바로가기](client/chapter/core/09-1.condition.js)
-  - 1.[바로가기](client/chapter/core/09-2.condition.js)
-- [ ] Loop [바로가기](client/)
-- [ ] Loop [바로가기](client/)
-- [ ] Loop [바로가기](client/)
-- [ ] Loop [바로가기](client/)
-- [ ] Loop [바로가기](client/)
+
+### Operations
+
+- [x] Operations (기본 연산자) [바로가기](client/chapter/core/08-1.operations.js.operations.js)
+- [x] Operations (비교 연산자) [바로가기](client/chapter/core/08-2.operations.js.operations.js)
+
+### Condition
+
+- [x] Condition (if조건문) [바로가기](client/chapter/core/09-1.condition.js)
+- [x] Condition (논리연산자) [바로가기](client/chapter/core/09-2.condition.js)
+- [x] Condition (switch..case) [바로가기](client/chapter/core/09-3.condition.js)
+- [x] Condition (nullish) [바로가기](client/chapter/core/09-4.condition.js.condition.js)
+
+### loop
