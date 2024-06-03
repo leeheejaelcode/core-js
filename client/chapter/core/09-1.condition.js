@@ -52,25 +52,15 @@ function watchingMovie() {
 //       : (goingToWatchMovie = '그 영화 꼭 봐'));
 // console.log(goingToWatchMovie);
 
-function render(node, isActive) {
-  let template = `
-    <div>${isActive ? '안녕~~!!' : '잘가~~!!'}</div>
-  `;
-  node.insertAdjacentHTML('beforeend', template);
-}
-
-render(document.body, true);
-render(document.body, false);
+// function render(node, isActive) {
+//   console.log(node);
+//   let template = `
+//     <div>${isActive ? '안녕~~!!' : '잘가~~!!'}</div>
+//   `;
+//   node.insertAdjacentHTML('beforeend', template);
+// }
+// console.log(document.body);
+// render(document.body, true);
+// render(document.body, false);
 
 // 멀티 조건부 연산자 식
-// const solution = (arr) => {
-//   let 합 = 0;
-//   let 곱 = 1;
-//   arr.forEach((a) => {
-//     합 += a;
-//     곱 *= a;
-//   });
-//   return 합 ** 2 > 곱 ? 1 : 0;
-// };
-// console.log(solution([3, 4, 5, 2, 1]));
-// console.log(solution([5, 7, 8, 3]));
