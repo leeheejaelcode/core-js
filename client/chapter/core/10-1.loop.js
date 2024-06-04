@@ -53,13 +53,3 @@ while (l > 0) {
 // while 문 (역순환 : 역방향)
 
 // 성능 진단 : 순환 vs. 역순환
-
-const solution = (a) => {
-  let arr = a.filter((val) => {
-    !val.includes('ad');
-  });
-
-  return arr;
-};
-console.log(solution(['and', 'notad', 'abcd']));
-console.log(solution(['there', 'are', 'no', 'a', 'ds']));

@@ -126,8 +126,3 @@ function weekend() {
 weekend();
 
 /* switch vs. if -------------------------------------------------------- */
-const solution = (n) => {
-  return n.split('');
-};
-console.log(solution('Hello World!'));
-console.log(solution('apple pen'));
