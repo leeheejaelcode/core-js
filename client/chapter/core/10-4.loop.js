@@ -24,9 +24,9 @@ Object.prototype.nickName = '호랑이';
 // 객체 자신의 속성인지 확인하는 방법
 // - "자신(own)의 속성(property)을 가지고(has)있는지 확인 방법"이 덮어쓰여질 수 있는 위험에 대처하는 안전한 방법은?
 // hasOwnProperty
-// console.log(javaScript.hasOwnProperty('nickName'));
-// console.log(javaScript.hasOwnProperty('toString'));
-// console.log(javaScript.hasOwnProperty('creator'));
+console.log(javaScript.hasOwnProperty('nickName'));
+console.log(javaScript.hasOwnProperty('toString'));
+console.log(javaScript.hasOwnProperty('creator'));
 
 // 메서드 빌려쓰기
 // console.log(Object.prototype.hasOwnProperty.call(javaScript, 'nickName'));
@@ -49,9 +49,7 @@ Object.prototype.nickName = '호랑이';
 // writable : 변경 가능한
 // configurable : 설정 가능한
 
-const obj = {};
-
-obj.nickName = 'tiger';
+// obj.nickName = 'tiger';
 
 // Object.defineProperty(obj,'age',{
 //   value:30,
@@ -60,13 +58,25 @@ obj.nickName = 'tiger';
 //   configurable:true
 // })
 
-// Object.defineProperties(obj,{
-//   age:{
-//     value:30,
-//     enumerable:true,
-//     writable:true
-//   }
-// })
+const obj = {};
+
+Object.defineProperties(obj, {
+  age: {
+    value: 30,
+    enumerable: true,
+  },
+  name: {
+    value: 'kim',
+    enumerable: false,
+  },
+});
+
+for (const key in obj) {
+  if (Object.hasOwnProperty.call(obj, key)) {
+    console.log(key);
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                for in 객체 접근                                */
 /* -------------------------------------------------------------------------- */
@@ -80,7 +90,7 @@ for (let key in javaScript) {
 // 대괄호 표기법  => 변수 설정 o
 
 /* -------------------------------------------------------------------------- */
-/*  for in 배열에도 접근이 가능하지만 순서보장이 안되고 성능이 저하됨              */
+/*       for in 배열에도 접근이 가능하지만 순서보장이 안되고 성능이 저하됨         */
 /* -------------------------------------------------------------------------- */
 const tens = [10, 100, 1000, 10_000];
 

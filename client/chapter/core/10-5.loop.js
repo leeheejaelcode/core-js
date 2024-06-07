@@ -108,6 +108,8 @@ const randomUser = {
 // - for ~ of 문
 // - 성능 비교 진단
 
+// iterable한 배열로 반환하기때문에 반복문 가능
+
 // Object.keys() => 객체들의 키를 모아 하나의 '배열로 반환'
 // Object.values() => 객체들의 값을 모아 하나의 '배열로 반환'
 const keys = Object.keys(arrayLike);
@@ -178,8 +180,3 @@ function hasProperty(obj, key) {
 //     }
 //   }
 // }
-
-const solution = (a, b) => a.filter((_, i) => !(i % b));
-
-console.log(solution([2, 1, 6], 1));
-console.log(solution([5, 2, 1, 7, 5], 3));
