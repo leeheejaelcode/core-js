@@ -30,7 +30,7 @@
 - [x] Condition (switch..case) [바로가기](client/chapter/core/09-3.condition.js)
 - [x] Condition (nullish) [바로가기](client/chapter/core/09-4.condition.js)
 
-### loop
+### Loop
 
 - [x] loop (while) [바로가기](client/chapter/core/10-1.loop.js)
 - [x] loop (do..while) [바로가기](client/chapter/core/10-2.loop.js)
@@ -38,9 +38,16 @@
 - [x] loop (for..in) [바로가기](client/chapter/core/10-4.loop.js)
 - [x] loop (for..of) [바로가기](client/chapter/core/10-5.loop.js)
 
-### function
+### Function
 
 - [x] function (함수선언문) [바로가기](client/chapter/core/11-1.function.js)
 - [x] function (함수표현식) [바로가기](client/chapter/core/11-2.function.js)
 - [x] function (화살표함수) [바로가기](client/chapter/core/11-3.function.js)
 - [x] function (재귀함수) [바로가기](client/chapter/core/11-4.function.js)
+
+### Object
+
+- [x] function (객체) [바로가기](client/chapter/core/12-1.object.js)
+- [x] function (참조에 의한 복사) [바로가기](client/chapter/core/12-2.object.js)
+- [x] function (가비지 콜렉션) [바로가기](client/chapter/core/12-3.object.js)
+- [x] function (메서드와 this) [바로가기](client/chapter/core/12-4.object.js)
