@@ -97,8 +97,8 @@ const memoFibo = (n) => {
 };
 memoFibo.cache = {};
 
-console.log(memoFibo(5));
-console.log(memoFibo.cache);
+// console.log(memoFibo(5));
+// console.log(memoFibo.cache);
 // 회사 부서 팀원들의 월급 총 합을 구해보세요.
 // - 반복문 기반 또는 재귀 호출 알고리즘 중 택 1
 
