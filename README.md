@@ -47,7 +47,33 @@
 
 ### Object
 
-- [x] function (객체) [바로가기](client/chapter/core/12-1.object.js)
-- [x] function (참조에 의한 복사) [바로가기](client/chapter/core/12-2.object.js)
-- [x] function (가비지 콜렉션) [바로가기](client/chapter/core/12-3.object.js)
-- [x] function (메서드와 this) [바로가기](client/chapter/core/12-4.object.js)
+- [x] object (객체) [바로가기](client/chapter/core/12-1.object.js)
+- [x] object (참조에 의한 복사) [바로가기](client/chapter/core/12-2.object.js)
+- [x] object (가비지 콜렉션) [바로가기](client/chapter/core/12-3.object.js)
+- [x] object (메서드와 this) [바로가기](client/chapter/core/12-4.object.js)
+
+### Prototype / Class
+
+- [x] Prototype (프로토타입의 상속) [바로가기](client/chapter/core/13-1.prototype.js)
+- [x] Class (클래스) [바로가기](client/chapter/core/13-2.prototype.js)
+
+### Closure
+
+- [x] Closure (클로저) [바로가기](client/chapter/core/14-1.closure.js)
+- [x] Closure (시나리오) [바로가기](client/chapter/core/14-2.closure.js)
+
+### Optional-chaining
+
+- [x] Optional-chaining (옵셔널 체이닝) [바로가기](client/chapter/core/15.optional.js)
+
+### Primitive Methods
+
+- [x] Primitive Methods (프리미티브 메소드) [바로가기](client/chapter/core/16.primitiveMethod.js)
+
+### Number
+
+- [x] Number (숫자형 객체) [바로가기](client/chapter/core/17.number.js)
+
+### String
+
+- [x] String (문자형 객체) [바로가기](client/chapter/core/18.string.js)
