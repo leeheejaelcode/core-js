@@ -30,13 +30,13 @@ const first = () => {
 
 function counter(count) {
   return () => {
-    ++count;
+    return ++count;
   };
 }
 
-let c1 = counter(); // 각각의 환경을 갖습니다.
-let c2 = counter();
-let c3 = counter();
+let c1 = counter(1); // 각각의 환경을 갖습니다.
+// let c2 = counter();
+// let c3 = counter();
 
 const counter2 = (count) => () => ++count;
 
