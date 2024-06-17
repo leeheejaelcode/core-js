@@ -77,3 +77,16 @@
 ### String
 
 - [x] String (문자형 객체) [바로가기](client/chapter/core/18.string.js)
+
+### Array
+
+- [x] Array (array Type) [바로가기](client/chapter/core/19.array.js)
+- [x] ArrayMethod(array Method) [바로가기](client/chapter/core/20.arrayMethod.js)
+
+### iterator protocol
+
+- [x] iterator (iterator object) [바로가기](client/chapter/core/21.iterator.js)
+
+### 예외처리
+
+- [x] Try..catch (예외처리) [바로가기](client/chapter/core/22.tryCatch.js)
