@@ -6,13 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/tiger.svg" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
-    <script src="./chapter/core/09-2.condition.js"></script>
+    <script defer src="./utils/type.js"></script>
+    <script defer="defer" src="./chapter/core/22.tryCatch.js"></script>
+    <!-- 스크립트 오류가 생겼던 이유는 document.body가 읽히기 전에 스크립트 태그를 사용해서 body를 가져오려 했기때문에 오류가
+        나서 defer를 사용해줌 -->
   </head>
   <body>
     <h1>
-      <span>Hello</span>
-
-      <span>Javascript</span>
+      <span class="first" id="first">Hello</span>
+      <span class="second">Javascript</span>
+      <span class="third">bye</span>
     </h1>
+    <ul></ul>
+    <!-- <button type="button">누르지마</button> -->
+
+    <!-- <div>
+      <label for="todo">할일</label>
+      <input type="text" id="todo" />
+      <button class="register">등록</button>
+
+      <h4>해야할 목록</h4>
+      <ul class="todoList"></ul>
+    </div> -->
   </body>
 </html>
