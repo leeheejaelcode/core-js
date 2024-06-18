@@ -110,16 +110,3 @@ const { back, forward, go, length, pushState, replaceState } = history;
 //   const values = Object.values(obj).map((a) => a.length);
 //   return Math.max(...values);
 // };
-
-const solution = (arr) => {
-  arr.map((v) => {
-    if (v >= 50 && v % 2 == 0) {
-      v /= 2;
-    } else {
-      v = v * 2 + 1;
-    }
-  });
-  return arr;
-};
-
-console.log(solution([1, 2, 3, 100, 99, 98]));
