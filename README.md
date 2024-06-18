@@ -6,6 +6,9 @@
 
 ---
 
-학습이 완료된 항목은 체크박스로 표시됩니다.
-
 자바스크립트의 DOM(document object model) API(application programming interface)에 대해 학습합니다.
+
+- [x] BOM (Browser Object Model) [바로가기](client/chapter/dom/01.BOM.js)
+- [x] DOM (Document Object Model) [바로가기](client/chapter/dom/02.DOM.js)
+- [x] nodeClass [바로가기](client/chapter/dom/03.nodeClass.js)
+- [x] attribute [바로가기](client/chapter/dom/04.attribute.js)
