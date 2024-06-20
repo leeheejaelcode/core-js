@@ -1,7 +1,7 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 
-const type = {
+const ignore = {
   isString: true,
   isObject: true,
   isArray: true,
@@ -11,6 +11,16 @@ const type = {
   isBigInt: true,
   isFunction: true,
   isMath: true,
+  insertAfter: true,
+  insertBefore: true,
+  insertFirst: true,
+  insertLast: true,
+  addClass: true,
+  removeClass: true,
+  toggleClass: true,
+  getNode: true,
+  getNodes: true,
+  bindEvent: true,
 };
 
 export default [
@@ -20,10 +30,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
-        ...type,
-        getNode: true,
-        getNodes: true,
-        attr: true,
+        ...ignore,
       },
     },
     rules: {
