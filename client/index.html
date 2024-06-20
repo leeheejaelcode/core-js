@@ -14,15 +14,17 @@
     <script defer src="./lib/dom/insert.js"></script>
     <script defer src="./lib/dom/css.js"></script>
     <script defer src="./lib/dom/bindEvent.js"></script>
-    <script defer="defer" src="./chapter/dom/08.bubble.js"></script>
+    <script defer="defer" src="./chapter/dom/09.delegation.js"></script>
     <!-- 스크립트 오류가 생겼던 이유는 document.body가 읽히기 전에 스크립트 태그를 사용해서 body를 가져오려 했기때문에 오류가
         나서 defer를 사용해줌 -->
   </head>
   <body>
-    <section>
-      <article>
-        <p></p>
-      </article>
-    </section>
+    <nav>
+      <ul>
+        <li class="about" data-name="about">😀<span>ABOUT</span></li>
+        <li class="home" data-name="home">🏠<span>HOME</span></li>
+        <li class="contact" data-name="contact">📞<span>CONTACT</span></li>
+      </ul>
+    </nav>
   </body>
 </html>

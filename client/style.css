@@ -1,43 +1,69 @@
-body {
-  height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
+.ground {
+  width: 400px;
+  height: 300px;
+  border: 5px solid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  background-color: #66cd7b;
+}
+
+.ground::after,
+.ground::before {
+  content: '';
+  width: 30px;
+  height: 50px;
+  background-color: rgba(128, 128, 128, 0.408);
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
 }
 
-span {
-  display: inline-block;
+.ground::after {
+  left: 0;
 }
 
-ul {
-  list-style: none;
+.ground::before {
+  right: 0;
+}
+#ball {
+  transition: all 0.1s;
+  pointer-events: none;
 }
 
-.userCard {
-  border: 1px solid;
+.emotion {
+  font-size: 2rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+section {
+  background-color: orange;
   padding: 2rem;
+}
 
-  & img {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
-  }
+article {
+  background-color: hotpink;
+  padding: 2rem;
+}
 
-  .contents {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-  }
+p {
+  background-color: dodgerblue;
+  padding: 2rem;
+}
 
-  .strong {
-    font-weight: bold;
-    color: #000;
-    background-color: #ededed;
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+
+  li {
+    padding: 1rem;
   }
 }
