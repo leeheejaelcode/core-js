@@ -20,9 +20,9 @@ function setAttr(node, prop, value) {
   }
 
   // prop에 data가 있으면 dataset으로 넣기
-  if (prop.includes('data')) {
-    let dataSlice = prop.slice(5);
-    return (node.dataset[dataSlice] = value);
+  if (prop.startsWith('data')) {
+    prop = prop.slice(5);
+    return (node.dataset[prop] = value);
   }
 
   if (value == '') {
