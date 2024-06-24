@@ -32,8 +32,15 @@ input[type=text]::placeholder{
 }
 
 input[type=submit]{
+<<<<<<< HEAD
   font-size: 1.1rem;
   padding: .5rem;
+=======
+  padding: 1rem;
+  font-size: 1rem;
+  margin-left:2rem;
+
+>>>>>>> a605e017761db183d08eb79d5e8a7330062ecf59
   cursor: pointer;
   background: hsl(42, 100%, 50%);
   border: none;
