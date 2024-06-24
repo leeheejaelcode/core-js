@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,node,webstorm,windows,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,node,webstorm,windows,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,webstorm,windows
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,node,visualstudiocode,webstorm,windows
 
 ### macOS ###
 # General
@@ -331,4 +331,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,node,webstorm,windows,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,webstorm,windows
