@@ -1,72 +1,78 @@
-import data from './data/data.js';
 import {
+  attr,
   getNode,
-  addClass,
-  removeClass,
-  showAlert,
-  getRandom,
+  getNodes,
+  endScroll,
   insertLast,
+  diceAnimation,
   clearContents,
-  isNumber,
-  isNumericString,
-  shake,
-  copy,
 } from './lib/index.js';
+// import를 함수가 아니라서 명시적으로 작성하지 않아도 실행이 됩니다.
 
-// [phase-1]
-// 1. 주접 떨기 버튼을 클릭 하는 함수
-//    - 주접 떨기 버튼 가져오기
-//    - 이벤트 연결하기 addEventListener('click')
+// 1. 주사위 애니메이션
+// 2. 주사위 굴리기 버튼을 클릭하면 diceAnimation() 실행 될 수 있도록
 
-// 2. input 값 가져오기
-//    - input.value
+const [rollingButton, recordButton, resetButton] = getNodes(
+  '.buttonGroup > button'
+);
+const recordListWrapper = getNode('.recordListWrapper');
 
-// 3. data함수에서 주접 1개 꺼내기
-//    - data(name)
-//    - getRandom()
+let count = 0;
+let total = 0;
 
-// 4. pick 항목 랜더링하기
+function createItem(value) {
+  const template =
+    /*html */
+    `
+  <tr>
+    <td>${++count}</td>
+    <td>${value}</td>
+    <td>${(total += +value)}</td>
+  </tr>
+  `;
 
-const submit = getNode('#submit');
-const nameField = getNode('#nameField');
-const result = getNode('.result');
-
-function handleSubmit(e) {
-  e.preventDefault();
-
-  const name = nameField.value;
-  const list = data(name);
-  const pick = list[getRandom(list.length)];
-
-  if (!name || name.replace(/\s*/g, '') === '') {
-    showAlert('.alert-error', '공백을 허용하지 않습니다');
-
-    // shake animation
-    shake('#nameField').restart();
-    return;
-  }
-
-  if (!isNumericString(name)) {
-    showAlert('.alert-error', '제대로된 이름을 입력해 주세요.');
-    shake('#nameField').restart();
-    return;
-  }
-
-  console.log(pick);
-
-  clearContents(result);
-  insertLast(result, pick);
+  return template;
 }
 
-function handleCopy() {
-  const text = result.textContent;
-  // 클립보드
-  if (nameField.value) {
-    copy(text).then(() => {
-      showAlert('.alert-success', '클립보드 복사 완료!');
-    });
-  }
+function renderRecordItem() {
+  // const diceValue = getNode('#cube').getAttribute('dice');
+  const diceValue = attr(getNode('#cube'), 'dice');
+
+  insertLast('.recordList tbody', createItem(diceValue));
+
+  endScroll(recordListWrapper);
 }
 
-submit.addEventListener('click', handleSubmit);
-result.addEventListener('click', handleCopy);
+const handleRollingDice = (() => {
+  let isClicked = false;
+  let stopAnimation;
+
+  return function () {
+    if (!isClicked) {
+      stopAnimation = setInterval(diceAnimation, 100);
+      recordButton.disabled = true;
+      resetButton.disabled = true;
+    } else {
+      clearInterval(stopAnimation);
+      recordButton.disabled = false;
+      resetButton.disabled = false;
+    }
+    isClicked = !isClicked;
+  };
+})();
+
+function handleRecord() {
+  recordListWrapper.hidden = false;
+  renderRecordItem();
+}
+
+function handleReset() {
+  recordListWrapper.hidden = true;
+  clearContents('tbody');
+  count = 0;
+  total = 0;
+}
+
+rollingButton.addEventListener('click', handleRollingDice);
+recordButton.addEventListener('click', handleRecord);
+resetButton.addEventListener('click', handleReset);
