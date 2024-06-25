@@ -1,78 +1,14 @@
-import {
-  attr,
-  getNode,
-  getNodes,
-  endScroll,
-  insertLast,
-  diceAnimation,
-  clearContents,
-} from './lib/index.js';
-// import를 함수가 아니라서 명시적으로 작성하지 않아도 실행이 됩니다.
+// Repressentational State Transfer (REST API Architecture)
 
-// 1. 주사위 애니메이션
-// 2. 주사위 굴리기 버튼을 클릭하면 diceAnimation() 실행 될 수 있도록
+// XHR
 
-const [rollingButton, recordButton, resetButton] = getNodes(
-  '.buttonGroup > button'
-);
-const recordListWrapper = getNode('.recordListWrapper');
+// get 해당 데이터 가져오기
+// delete
 
-let count = 0;
-let total = 0;
+// body에 데이터 실어야 함
 
-function createItem(value) {
-  const template =
-    /*html */
-    `
-  <tr>
-    <td>${++count}</td>
-    <td>${value}</td>
-    <td>${(total += +value)}</td>
-  </tr>
-  `;
+// post 어떠한 데이터를 실어보내서 그 데이터를 가지고 서버가 만들어줘 (body 필요)
+// put body 내용만 나오게
+// patch body 내용만 변경되게
 
-  return template;
-}
-
-function renderRecordItem() {
-  // const diceValue = getNode('#cube').getAttribute('dice');
-  const diceValue = attr(getNode('#cube'), 'dice');
-
-  insertLast('.recordList tbody', createItem(diceValue));
-
-  endScroll(recordListWrapper);
-}
-
-const handleRollingDice = (() => {
-  let isClicked = false;
-  let stopAnimation;
-
-  return function () {
-    if (!isClicked) {
-      stopAnimation = setInterval(diceAnimation, 100);
-      recordButton.disabled = true;
-      resetButton.disabled = true;
-    } else {
-      clearInterval(stopAnimation);
-      recordButton.disabled = false;
-      resetButton.disabled = false;
-    }
-    isClicked = !isClicked;
-  };
-})();
-
-function handleRecord() {
-  recordListWrapper.hidden = false;
-  renderRecordItem();
-}
-
-function handleReset() {
-  recordListWrapper.hidden = true;
-  clearContents('tbody');
-  count = 0;
-  total = 0;
-}
-
-rollingButton.addEventListener('click', handleRollingDice);
-recordButton.addEventListener('click', handleRecord);
-resetButton.addEventListener('click', handleReset);
+import {} from './lib/index.js';
