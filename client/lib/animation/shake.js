@@ -14,5 +14,5 @@ export function shake(t) {
   });
 
   return animation;
-  // animation.restart(); 을 사용하기 위해 animation을 반환함
+  // shake().restart(); 을 사용하기 위해 animation을 반환함
 }
