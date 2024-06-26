@@ -101,6 +101,19 @@ function xhr({
   });
 
   xhr.send(JSON.stringify(body));
+
+  // return new Promise((resolve, reject) => {
+  //   xhr.addEventListener('readystatechange', () => {
+  //     const { readyState, status, response } = xhr;
+  //     if (readyState === 4) {
+  //       if (status >= 200 && status < 400) {
+  //         resolve(JSON.parse(response));
+  //       } else {
+  //         reject('실패');
+  //       }
+  //     }
+  //   });
+  // });
 }
 
 // xhr(
@@ -111,15 +124,13 @@ function xhr({
 //   (err) => console.log(err)
 // );
 
-// 1. 무조건 매개변수 순서에 맞게 작성
-// 2. 매개변수 안썼을 때
-
+// 함수 호출
 xhr({
   method: 'POST',
   url: ENDPOINT,
   body: user,
   onSuccess(data) {
-    console.log(data);
+    // console.log(data);
   },
   onFail(err) {
     console.log(err);
@@ -159,11 +170,11 @@ xhr.delete = (url, onSuccess, onFail) => {
   });
 };
 
-xhr.get(
-  ENDPOINT,
-  (data) => console.log(data),
-  (err) => console.log(err)
-);
+// xhr.get(
+//   ENDPOINT
+//   (data) => console.log(data)
+//   (err) => console.log(err)
+// );
 
 // 함수 안에 메서드를 정의할 수 없음
 // 생성자 함수로만 함수 안에 메서드를 정의 할 수 있음(this바인딩 하기 때문에)
@@ -171,3 +182,27 @@ xhr.get(
 /* -------------------------------------------------------------------------- */
 /*                                // xhr Promise 방식                         */
 /* -------------------------------------------------------------------------- */
+
+function xhrPromise(method, url, body) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open(method, url);
+
+  xhr.send(JSON.stringify(body)); // 문자화
+
+  return new Promise((resolve, reject) => {
+    xhr.addEventListener('readystatechange', () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          resolve(JSON.parse(xhr.response)); // 객체화
+        } else {
+          reject({ message: '알 수 없는 오류가 발생했습니다' });
+        }
+      }
+    });
+  });
+}
+
+xhrPromise('GET', ENDPOINT, { name: 'tiger' }).then((data) => {
+  console.log(data);
+});
