@@ -11,4 +11,14 @@
 // put body 내용만 나오게
 // patch body 내용만 변경되게
 
-import {} from './lib/index.js';
+import { xhrPromise } from './lib/index.js';
+
+const getData = async () => {
+  const data = await xhrPromise.get(
+    'https://jsonplaceholder.typicode.com/users'
+  );
+
+  return console.log(data);
+};
+
+getData();
