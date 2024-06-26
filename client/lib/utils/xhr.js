@@ -179,30 +179,91 @@ xhr.delete = (url, onSuccess, onFail) => {
 // 함수 안에 메서드를 정의할 수 없음
 // 생성자 함수로만 함수 안에 메서드를 정의 할 수 있음(this바인딩 하기 때문에)
 
-/* -------------------------------------------------------------------------- */
-/*                                // xhr Promise 방식                         */
-/* -------------------------------------------------------------------------- */
+/* -------------------------------------------- */
+/*               xhr Promise 방식               */
+/* -------------------------------------------- */
 
-function xhrPromise(method, url, body) {
+const defaultOptions = {
+  method: 'GET',
+  url: '',
+  body: null,
+  errorMessage: '서버와의 통신이 원활하지 않습니다.',
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  },
+};
+
+// enumerable => 열거 가능한 => for..of/ for..in
+// iterable   => 순환 가능한 => for..of
+// immutable  => 불변의
+
+// const arr = [1,2,3];
+// const newArr = [...arr,4]
+
+export function xhrPromise(options) {
+  const { method, url, body, headers, errorMessage } = {
+    ...defaultOptions,
+    ...options,
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    },
+  };
+
   const xhr = new XMLHttpRequest();
 
   xhr.open(method, url);
 
-  xhr.send(JSON.stringify(body)); // 문자화
+  Object.entries(headers).forEach(([key, value]) => {
+    xhr.setRequestHeader(key, value);
+  });
+
+  xhr.send(JSON.stringify(body));
 
   return new Promise((resolve, reject) => {
     xhr.addEventListener('readystatechange', () => {
       if (xhr.readyState === 4) {
         if (xhr.status >= 200 && xhr.status < 400) {
-          resolve(JSON.parse(xhr.response)); // 객체화
+          resolve(JSON.parse(xhr.response));
         } else {
-          reject({ message: '알 수 없는 오류가 발생했습니다' });
+          reject({ message: errorMessage });
         }
       }
     });
   });
 }
 
-xhrPromise('GET', ENDPOINT, { name: 'tiger' }).then((data) => {
-  console.log(data);
-});
+xhrPromise.get = (url) => {
+  return xhrPromise({ url });
+};
+
+xhrPromise.post = (url, body) => {
+  return xhrPromise({
+    url,
+    body,
+    method: 'POST',
+  });
+};
+
+xhrPromise.put = (url, body) => {
+  return xhrPromise({
+    url,
+    body,
+    method: 'PUT',
+  });
+};
+
+xhrPromise.delete = (url) => {
+  return xhrPromise({
+    url,
+    method: 'DELETE',
+  });
+};
+
+/*
+xhrPromise.get = (url) => xhrPromise({ url })
+xhrPromise.post = (url,body) => xhrPromise({ url, body, method:'POST' })
+xhrPromise.put = (url,body) => xhrPromise({ url, body, method:'PUT' })
+xhrPromise.delete = url => xhrPromise({ url, method:'DELETE' })
+ */
