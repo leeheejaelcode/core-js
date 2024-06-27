@@ -21,9 +21,11 @@ import {
   renderSpinner,
   renderUserCard,
   renderEmptyCard,
+  attr,
+  clearContents,
 } from './lib/index.js';
 
-const ENDPOINT = 'https://jsonplaceholder.typicode.com/user';
+const ENDPOINT = 'http://localhost:3000/users';
 
 // 1. user 데이터 fetch 해주세요.
 //     - tiger.get
@@ -40,7 +42,7 @@ async function renderUserList() {
   // 데이터 통신에 걸리는 시간동안 svg 애니메이션 출력
   renderSpinner(userCardInner);
 
-  await delayP(2000);
+  // await delayP(2000);
 
   try {
     // 유저의 정보를 가져오지 올때 처리
@@ -72,3 +74,22 @@ async function renderUserList() {
 }
 
 renderUserList();
+
+function handleDeleteCard(e) {
+  const button = e.target.closest('button');
+  if (!button) return;
+  // 버튼에 인접한 article
+  const article = button.closest('article');
+  const index = article.dataset.index.slice(5);
+  // const index = attr(article, 'data-index').slice(5);
+
+  // delete가 된 상태를 보장할수 없어서 then을 붙혀줍니다
+  tiger.delete(`${ENDPOINT}/${index}`).then(() => {
+    // 기존 항목을 지우기
+    clearContents(userCardInner);
+    // 요청 보내고 렌더링하기
+    renderUserList();
+  });
+}
+
+userCardInner.addEventListener('click', handleDeleteCard);
