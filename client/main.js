@@ -93,3 +93,51 @@ function handleDeleteCard(e) {
 }
 
 userCardInner.addEventListener('click', handleDeleteCard);
+
+const createButton = getNode('.create');
+const cancelButton = getNode('.cancel');
+const doneButton = getNode('.done');
+
+function handleCreate() {
+  gsap.to('.pop', { autoAlpha: 1 });
+}
+
+// 사실상 뒤에 createButton.addEventListener('click', handleCreate)이게 한번 더 실행 되기 때문에
+// e.stopPropagation을 사용해서 버블링 막음.
+
+function handleCancel(e) {
+  e.stopPropagation();
+  gsap.to('.pop', { autoAlpha: 0 });
+}
+
+function handleDone(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const name = getNode('#nameField').value;
+  const email = getNode('#emailField').value;
+  const website = getNode('#siteField').value;
+
+  tiger
+    .post(ENDPOINT, {
+      name,
+      email,
+      website,
+    })
+    .then(() => {
+      // 1. 팝업 닫기
+      gsap.to('.pop', { autoAlpha: 0 });
+      // 2. 카드 컨텐츠 비우기
+      clearContents(userCardInner);
+      // 2. 유저 카드 렌더링하기
+      renderUserList();
+    });
+}
+createButton.addEventListener('click', handleCreate);
+cancelButton.addEventListener('click', handleCancel);
+doneButton.addEventListener('click', handleDone);
+
+/* 새로고침을 하게되면 불필요한 js 파일까지 다시 load가 되기때문에
+비효율적 입니다.
+그렇기 때문에 비동기 통신 async await을 사용하여 필요한 파일만 load 시킵니다.
+*/
