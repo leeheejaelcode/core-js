@@ -1,26 +1,37 @@
-import { insertFirst } from './lib/index.js';
-class MyElement extends HTMLElement {
+class Button extends HTMLElement {
   constructor() {
     super();
+    // console.log(this.id);
+    // console.log(this.label); label은 input의 표준이기때문에
+    // console.log(this.getAttribute('label')); 로 가져와야합니다
+    // console.log(this.dataset.label); 이렇게 가져옵니다
+    this.button = document.querySelector('button');
   }
-
   connectedCallback() {
-    // 생성 될때 1회 호출
-    // mount
-    console.log('탄생함');
+    this._render();
+  }
+  disconnectedCallback() {}
+  static get observedAttributes() {
+    return ['id'];
   }
 
-  disconnectedCallback() {
-    // 생명주기를 다 했을때
-    // unmount
-    console.log('죽음!');
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this._render();
+    }
+  }
+
+  _render() {
+    // 내가 수집한 button의 textContent를 나의 id값으로
+    this.button.textContent = this.id;
   }
 }
-// 웹 컴포넌트 정의 (정의할 태크이름, 클래스네임)
-customElements.define('c-element', MyElement);
 
-const elem = document.createElement('c-element');
+customElements.define('c-button', Button);
 
-const app = document.getElementById('app');
+const c = document.querySelector('c-button');
 
-app.appendChild(elem);
+let count = 0;
+c.addEventListener('click', () => {
+  c.setAttribute('id', ++count);
+});
