@@ -1,28 +1,19 @@
-class Button extends HTMLElement {
-  constructor() {
-    super();
-    // shadowDom을 열어두면 캡슐화가 되지 않은 상태
-    this.attachShadow({ mode: 'open' });
-    // shadowDom을 닫아놓으면 캡슐화가 된 상태
-    // this.attachShadow({ mode: 'closed' });
+const app = document.querySelector('#app');
+// const temp = document.querySelector('#temp');
 
-    // this.attachShadow({ mode: 'closed' }); 닫힌 상태에서는
-    // 참조를 해야지 접근이 가능합니다.
+const template = document.createElement('template');
 
-    // shadow돔은 캡슐화를 위해서 사용합니다.
-    this.shadowRoot.innerHTML = `
-      <button>hello</button>
-    `;
-  }
+template.innerHTML = `
+<div>안녕하세요</div>
+<div>감사해요</div>
+<div>잘있어요</div>
+<div>다시만나</div>
+`;
 
-  connectedCallback() {}
+// 바로는 넣을수 없고 복제를 하고 넣어야함
+// 템플릿은 복제를 하고 씁니다!
+// cloneNode는 돔의 메서드
+const clone = template.content.cloneNode(true);
 
-  disconnectedCallback() {}
-}
-
-customElements.define('c-button', Button);
-
-// elem.shadowRoot.querySelector('button')를 통해야지만 접근이 가능
-console.log(
-  document.querySelector('c-button').shadowRoot.querySelector('button')
-);
+// template는 fragment입니다 의미없는 그룹핑
+app.appendChild(clone);
