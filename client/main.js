@@ -1,27 +1,26 @@
-import {
-  getNode,
-  getStorage,
-  setStorage,
-  deleteStorage,
-  clearContents,
-} from './lib/index.js';
+import { insertFirst } from './lib/index.js';
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+  }
 
-const textField = getNode('#textField');
-const clear = getNode('button[data-name="clear"]');
+  connectedCallback() {
+    // 생성 될때 1회 호출
+    // mount
+    console.log('탄생함');
+  }
 
-getStorage('text').then((res) => {
-  textField.value = res;
-});
-function handleTextField() {
-  const value = this.value;
-  setStorage('text', value);
+  disconnectedCallback() {
+    // 생명주기를 다 했을때
+    // unmount
+    console.log('죽음!');
+  }
 }
+// 웹 컴포넌트 정의 (정의할 태크이름, 클래스네임)
+customElements.define('c-element', MyElement);
 
-function handleClear() {
-  deleteStorage('text');
-  clearContents(textField);
-}
+const elem = document.createElement('c-element');
 
-textField.addEventListener('input', handleTextField);
-clear.addEventListener('click', handleClear);
+const app = document.getElementById('app');
 
+app.appendChild(elem);
