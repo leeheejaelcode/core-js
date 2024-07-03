@@ -11,7 +11,20 @@
   </head>
   <body>
     <div id="app">
-      <c-button></c-button>
+      <!-- 라이트돔에 slot을 작성하고 스크립트에서 슬롯의 name을 지정해주면 지정된 slot만 가져옴 -->
+      <!-- 라이트돔에 slot을 작성하지 않으면 지정되지 않은 나머지 slot을 모두 가져옴 -->
+      <!-- slot이 동일하면 다 같이 불러옴 -->
+      <user-card>
+        <div slot="username">name: tiger</div>
+        <div slot="userage">age: 30</div>
+        <div slot="usergender">gender: male</div>
+        <div slot="a">a</div>
+        <div slot="a">b</div>
+        <div slot="a">c</div>
+        <div>안녕</div>
+        <div>나는</div>
+        <div>나머지야</div>
+      </user-card>
     </div>
   </body>
 </html>

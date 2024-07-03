@@ -1,19 +1,21 @@
-const app = document.querySelector('#app');
-// const temp = document.querySelector('#temp');
+class UserCard extends HTMLElement {
+  constructor() {
+    super();
+    // 라이트 돔보다
+    // 쉐도우 돔이 우선시 됩니다.
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+    <slot name="userage"></slot>
+    <slot name="a"></slot>
+    <div>nickName : kind-tiger <div>
+    <slot></slot>
+    <slot name="email">any@naver.com</slot>
+    `;
 
-const template = document.createElement('template');
+    //  라이트돔에 slot을 작성하고 스크립트에서 슬롯의 name을 지정해주면 지정된 slot만 가져옴
+    //  라이트돔에 slot을 작성하지 않으면 지정되지 않은 나머지 slot을 모두 가져옴
+    //  slot이 동일하면 다 같이 불러옴
+  }
+}
 
-template.innerHTML = `
-<div>안녕하세요</div>
-<div>감사해요</div>
-<div>잘있어요</div>
-<div>다시만나</div>
-`;
-
-// 바로는 넣을수 없고 복제를 하고 넣어야함
-// 템플릿은 복제를 하고 씁니다!
-// cloneNode는 돔의 메서드
-const clone = template.content.cloneNode(true);
-
-// template는 fragment입니다 의미없는 그룹핑
-app.appendChild(clone);
+customElements.define('user-card', UserCard);
