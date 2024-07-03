@@ -24,3 +24,4 @@ function handleClear() {
 
 textField.addEventListener('input', handleTextField);
 clear.addEventListener('click', handleClear);
+
